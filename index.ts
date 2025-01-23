@@ -15,8 +15,8 @@ await $`sudo sh -c 'echo > /var/log/syslog'`;
 
 
 console.log('------------------- Cleaning... Terraform -------------------')
-await $`cd ${process.env.HOME}/github; find . -name ".terraform" -type d -prune | xargs du -chs`;
-await $`cd ${process.env.HOME}/gitlab; find . -name ".terraform" -type d -prune | xargs du -chs`;
+await $`cd ${process.env.HOME}/github; sudo find . -name ".terraform" -type d -prune -exec rm -rf '{}' +`;
+await $`cd ${process.env.HOME}/gitlab; sudo find . -name ".terraform" -type d -prune -exec rm -rf '{}' +`;
 
 console.log('------------------- Cleaning... Node Module -------------------')
 await $`cd ${process.env.HOME}/github; sudo find . -name "node_modules" -type d -prune -exec rm -rf '{}' +`;
